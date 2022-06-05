@@ -57,7 +57,7 @@ impl<T: pallet_evm::Config> PrecompileTest<T>
 
     fn account_from_pubkey(
         pubkey: &[u8]
-    ) -> Result<T::AccountId32, ExitError> {
+    ) -> Result<T::AccountId, ExitError> {
         frame_support::ensure!(pubkey.len() == 32, ExitError::Other("invalid pubkey".into()));
 
         let mut target = [0u8; 32];
