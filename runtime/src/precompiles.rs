@@ -38,7 +38,7 @@ impl<R> PrecompileSet for NBPrecompiles<R>
     where
         R: pallet_evm::Config,
         R::Call: Dispatchable<PostInfo=PostDispatchInfo> + GetDispatchInfo + Decode,
-        <R::Call as Dispatchable>::Origin: From<Option<R::AccountId>>,
+        <R::Call as Dispatchable>::Origin: From<Option<R::AccountId32>>,
 {
     fn execute(
         address: H160,

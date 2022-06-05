@@ -5,7 +5,7 @@ use core::marker::PhantomData;
 use fp_evm::{PrecompileOutput, Context, ExitError, ExitSucceed};
 use pallet_evm::{Precompile, AddressMapping};
 use sp_core::{H160, U256, hexdisplay::HexDisplay};
-use sp_runtime::{traits::UniqueSaturatedInto, AccountId};
+use sp_runtime::{traits::UniqueSaturatedInto, AccountId32};
 use codec::{Encode, Decode};
 use frame_support::log;
 // use pallet_coming_id::ComingNFT;
@@ -47,7 +47,7 @@ impl<T: pallet_evm::Config> PrecompileTest<T>
 
     fn account_from_address(
         address: &[u8]
-    ) -> Result<T::AccountId, ExitError> {
+    ) -> Result<T::AccountId32, ExitError> {
         frame_support::ensure!(address.len() == 20, ExitError::Other("invalid address".into()));
 
         let from = H160::from_slice(&address[0..20]);
@@ -57,14 +57,14 @@ impl<T: pallet_evm::Config> PrecompileTest<T>
 
     fn account_from_pubkey(
         pubkey: &[u8]
-    ) -> Result<T::AccountId, ExitError> {
+    ) -> Result<T::AccountId32, ExitError> {
         frame_support::ensure!(pubkey.len() == 32, ExitError::Other("invalid pubkey".into()));
 
         let mut target = [0u8; 32];
         target[0..32].copy_from_slice(&pubkey[0..32]);
 
-        T::AccountId::decode(&mut &AccountId::new(target).encode()[..])
-            .map_err(|_| ExitError::Other("decode AccountId failed".into()))
+        T::AccountId32::decode(&mut &AccountId32::new(target).encode()[..])
+            .map_err(|_| ExitError::Other("decode AccountId32 failed".into()))
     }
 
     fn balance(value: &[u8]) -> Result<u128, ExitError> {
@@ -100,7 +100,7 @@ impl<T: pallet_evm::Config> PrecompileTest<T>
 impl<T> Precompile for PrecompileTest<T>
     where
         T: pallet_evm::Config,
-        T::AccountId: Decode,
+        T::AccountId32: Decode,
 {
     fn execute(
         input: &[u8],

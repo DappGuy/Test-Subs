@@ -14,7 +14,7 @@ use sp_consensus_aura::sr25519::AuthorityId as AuraId;
 use sp_core::{crypto::KeyTypeId, OpaqueMetadata, U256};
 use sp_runtime::{
     create_runtime_str, generic, impl_opaque_keys,
-    traits::{AccountIdLookup, BlakeTwo256, Block as BlockT, IdentifyAccount, NumberFor, Verify},
+    traits::{AccountId32Lookup, BlakeTwo256, Block as BlockT, IdentifyAccount, NumberFor, Verify},
     transaction_validity::{TransactionSource, TransactionValidity, TransactionValidityError},
     ApplyExtrinsicResult, MultiSignature,
 };
@@ -78,7 +78,7 @@ pub type Signature = MultiSignature;
 
 /// Some way of identifying an account on the chain. We intentionally make it equivalent
 /// to the public key of our transaction signing scheme.
-pub type AccountId = <<Signature as Verify>::Signer as IdentifyAccount>::AccountId;
+pub type AccountId32 = <<Signature as Verify>::Signer as IdentifyAccount>::AccountId32;
 
 /// Balance of an account.
 pub type Balance = u128;
@@ -177,11 +177,11 @@ impl frame_system::Config for Runtime {
     /// The maximum length of a block (in bytes).
     type BlockLength = BlockLength;
     /// The identifier used to distinguish between accounts.
-    type AccountId = AccountId;
+    type AccountId32 = AccountId32;
     /// The aggregated dispatch type that is available for extrinsics.
     type Call = Call;
     /// The lookup mechanism to get account ID from whatever is passed in dispatchers.
-    type Lookup = AccountIdLookup<AccountId, ()>;
+    type Lookup = AccountId32Lookup<AccountId32, ()>;
     /// The index type for storing how many extrinsics an account has signed.
     type Index = Index;
     /// The index type for blocks.
@@ -460,7 +460,7 @@ impl fp_rpc::ConvertTransaction<opaque::UncheckedExtrinsic> for TransactionConve
 }
 
 /// The address format for describing accounts.
-pub type Address = sp_runtime::MultiAddress<AccountId, ()>;
+pub type Address = sp_runtime::MultiAddress<AccountId32, ()>;
 /// Block header type as expected by this runtime.
 pub type Header = generic::Header<BlockNumber, BlakeTwo256>;
 /// Block type as expected by this runtime.
@@ -479,7 +479,7 @@ pub type SignedExtra = (
 pub type UncheckedExtrinsic =
 fp_self_contained::UncheckedExtrinsic<Address, Call, Signature, SignedExtra>;
 /// Extrinsic type that has already been checked.
-pub type CheckedExtrinsic = fp_self_contained::CheckedExtrinsic<AccountId, Call, SignedExtra, H160>;
+pub type CheckedExtrinsic = fp_self_contained::CheckedExtrinsic<AccountId32, Call, SignedExtra, H160>;
 /// Executive: handles dispatch to the various modules.
 pub type Executive = frame_executive::Executive<
     Runtime,
@@ -646,8 +646,8 @@ impl_runtime_apis! {
 		}
 	}
 
-	impl frame_system_rpc_runtime_api::AccountNonceApi<Block, AccountId, Index> for Runtime {
-		fn account_nonce(account: AccountId) -> Index {
+	impl frame_system_rpc_runtime_api::AccountNonceApi<Block, AccountId32, Index> for Runtime {
+		fn account_nonce(account: AccountId32) -> Index {
 			System::account_nonce(account)
 		}
 	}
@@ -666,8 +666,8 @@ impl_runtime_apis! {
 			TransactionPayment::query_fee_details(uxt, len)
 		}
 	}
-	 impl pallet_erc20_rpc_runtime_api::ERC20Api<Block, AccountId> for Runtime {
-		fn get_erc20_info(_owner: AccountId) -> Option<ERC20Info<AccountId>> {
+	 impl pallet_erc20_rpc_runtime_api::ERC20Api<Block, AccountId32> for Runtime {
+		fn get_erc20_info(_owner: AccountId32) -> Option<ERC20Info<AccountId32>> {
 			ERC20::get_erc20_info()
 		}
 	}
