@@ -10,7 +10,7 @@ pub mod pallet {
     use frame_support::sp_runtime::MultiSignature;
     use frame_support::inherent::Vec;
     use frame_support::sp_runtime::traits::Verify;
-    use sp_core::crypto::AccountId32;
+    use sp_core::crypto::AccountId;
     use frame_support::sp_runtime::app_crypto::TryFrom;
 
     #[pallet::config]
@@ -43,7 +43,7 @@ pub mod pallet {
         #[pallet::weight(10_000)]
         pub fn check(
             origin: OriginFor<T>,
-            address: AccountId32,
+            address: AccountId,
             message: Vec<u8>,
             signature: Vec<u8>,
         ) -> DispatchResult {

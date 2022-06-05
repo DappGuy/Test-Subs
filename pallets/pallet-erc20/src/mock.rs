@@ -13,7 +13,7 @@ use sp_runtime::{
 pub use pallet_erc20::{Config, Error, Event as ERC20Event};
 
 pub use pallet_balances::Error as BalancesError;
-use sp_core::crypto::AccountId32;
+use sp_core::crypto::AccountId;
 use sp_core::sp_std::str::FromStr;
 
 type UncheckedExtrinsic = frame_system::mocking::MockUncheckedExtrinsic<Test>;

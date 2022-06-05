@@ -102,10 +102,10 @@ pub fn testnet_config() -> Result<ChainSpec, String> {
                      GrandpaId::from_slice(&hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"][..])
                  )],
                  // Sudo account
-                 AccountId32::from(hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"]),
+                 AccountId::from(hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"]),
                  // Pre-funded accounts
                  vec![
-                     AccountId32::from(hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"]),
+                     AccountId::from(hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"]),
                  ],
                  true,
                  vec![],
