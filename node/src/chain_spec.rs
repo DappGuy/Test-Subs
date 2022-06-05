@@ -82,51 +82,47 @@ pub fn mainnet_config() -> Result<ChainSpec, String> {
     ))
 }
 
-// pub fn testnet_config() -> Result<ChainSpec, String> {
-//     let mut properties = Properties::new();
-//     properties.insert("tokenSymbol".into(), "DIR".into());
-//     properties.insert("tokenDecimals".into(), 18.into());
-//     let wasm_binary = WASM_BINARY.ok_or_else(|| "Development wasm not available".to_string())?;
-//     Ok(ChainSpec::from_genesis(
-//         // Name
-//         "diora",
-//         // ID
-//         "testnet",
-//         ChainType::Live,
-//         move || {
-//             nb_genesis(
-//                 wasm_binary,
-//                 // Initial PoA authorities
-//                 vec![(
-//                     AuraId::from_slice(&(hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"][..])),
-//                     GrandpaId::from_slice(&hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"][..])
-//                 )],
-//                 // Sudo account
-//                 AccountId32::from(hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"]),
-//                 // Pre-funded accounts
-//                 vec![
-//                     AccountId32::from(hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"]),
-//                 ],
-//                 true,
-//                 vec![],
-//             )
-//         },
-//         // Bootnodes
-//         vec![],
-//         // Telemetry
-//         None,
-//         // Protocol ID
-//         None,
-//         // Properties
-//         Some(properties),
-//         // Extensions
-//         None,
-//     ))
-// }
-
-// pub fn mainnet_config() -> Result<ChainSpec, String> {
-//     ChainSpec::from_json_bytes(&include_bytes!("../res/diora-mainnet-raw.json")[..])
-// }
+pub fn testnet_config() -> Result<ChainSpec, String> {
+     let mut properties = Properties::new();
+     properties.insert("tokenSymbol".into(), "DIR".into());
+     properties.insert("tokenDecimals".into(), 18.into());
+          let wasm_binary = WASM_BINARY.ok_or_else(|| "Development wasm not available".to_string())?;
+     Ok(ChainSpec::from_genesis(
+         // Name
+         "diora",
+         // ID
+         "testnet",
+         ChainType::Live,
+         move || {
+             nb_genesis(
+                 wasm_binary,
+                 // Initial PoA authorities
+                 vec![(
+                     AuraId::from_slice(&(hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"][..])),
+                     GrandpaId::from_slice(&hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"][..])
+                 )],
+                 // Sudo account
+                 AccountId32::from(hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"]),
+                 // Pre-funded accounts
+                 vec![
+                     AccountId32::from(hex_literal::hex!["aea48c27a7f703a7f8acedf15b43e8fcbad0b7846e5fe32a0b2b75cb81d75306"]),
+                 ],
+                 true,
+                 vec![],
+             )
+         },
+         // Bootnodes
+         vec![],
+         // Telemetry
+         None,
+         // Protocol ID
+         None,
+         // Properties
+         Some(properties),
+         // Extensions
+         None,
+     ))
+ }
 
 pub fn development_config() -> Result<ChainSpec, String> {
     let mut properties = Properties::new();
@@ -135,7 +131,7 @@ pub fn development_config() -> Result<ChainSpec, String> {
     let wasm_binary = WASM_BINARY.ok_or_else(|| "Development wasm not available".to_string())?;
     Ok(ChainSpec::from_genesis(
         // Name
-        "Development",
+        "Diora Development",
         // ID
         "dev",
         ChainType::Development,

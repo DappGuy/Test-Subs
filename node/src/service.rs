@@ -12,8 +12,6 @@ use sc_telemetry::{Telemetry, TelemetryWorker};
 use sp_consensus::SlotData;
 use sp_consensus_aura::sr25519::AuthorityPair as AuraPair;
 use std::{sync::Arc, time::Duration};
-use Diora_runtime::opaque::Block;
-use Diora_runtime::RuntimeApi;
 
 // EVM
 use fc_consensus::FrontierBlockImport;
