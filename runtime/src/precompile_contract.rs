@@ -63,8 +63,8 @@ impl<T: pallet_evm::Config> PrecompileTest<T>
         let mut target = [0u8; 32];
         target[0..32].copy_from_slice(&pubkey[0..32]);
 
-        T::AccountId32::decode(&mut &AccountId32::new(target).encode()[..])
-            .map_err(|_| ExitError::Other("decode AccountId32 failed".into()))
+        T::AccountId::decode(&mut &AccountId::new(target).encode()[..])
+            .map_err(|_| ExitError::Other("decode AccountId failed".into()))
     }
 
     fn balance(value: &[u8]) -> Result<u128, ExitError> {
