@@ -47,7 +47,7 @@ impl<T: pallet_evm::Config> PrecompileTest<T>
 
     fn account_from_address(
         address: &[u8]
-    ) -> Result<T::AccountId32, ExitError> {
+    ) -> Result<T::AccountId, ExitError> {
         frame_support::ensure!(address.len() == 20, ExitError::Other("invalid address".into()));
 
         let from = H160::from_slice(&address[0..20]);
@@ -100,7 +100,7 @@ impl<T: pallet_evm::Config> PrecompileTest<T>
 impl<T> Precompile for PrecompileTest<T>
     where
         T: pallet_evm::Config,
-        T::AccountId32: Decode,
+        T::AccountId: Decode,
 {
     fn execute(
         input: &[u8],
