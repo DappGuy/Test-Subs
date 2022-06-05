@@ -43,7 +43,7 @@ pub mod pallet {
         #[pallet::weight(10_000)]
         pub fn check(
             origin: OriginFor<T>,
-            address: AccountId,
+            address: AccountId32,
             message: Vec<u8>,
             signature: Vec<u8>,
         ) -> DispatchResult {
