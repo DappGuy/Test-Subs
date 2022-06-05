@@ -10,7 +10,7 @@ pub mod pallet {
     use frame_support::sp_runtime::MultiSignature;
     use frame_support::inherent::Vec;
     use frame_support::sp_runtime::traits::Verify;
-    use sp_core::crypto::AccountId;
+    use sp_core::crypto::AccountId32;
     use frame_support::sp_runtime::app_crypto::TryFrom;
 
     #[pallet::config]
