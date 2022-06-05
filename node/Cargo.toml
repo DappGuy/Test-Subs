@@ -1,13 +1,13 @@
 [package]
-name = 'Diora'
+name = 'diora'
 version = '1.0.0'
-description = 'Diora'
+description = 'diora'
 authors = ['wangningbo, 0xJay']
 edition = '2018'
-repository = 'https://github.com/diroa-network/Diora/'
+repository = 'https://github.com/diroa-network/diora/'
 
 [[bin]]
-name = 'Diora'
+name = 'diora'
 
 [package.metadata.docs.rs]
 targets = ['x86_64-unknown-linux-gnu']
@@ -64,7 +64,7 @@ pallet-erc20-rpc = { version = "1.0.0", path = "../pallets/pallet-erc20/rpc" }
 #pallet-threshold-signature-rpc = { version = "3.0.0", path = "../pallets/threshold-signature/rpc"}
 #pallet-coming-auction-rpc = { path = "../pallets/pallet-coming-auction/rpc" }
 
-Diora-runtime = { version = "1.0.0", path = "../runtime" }
+diora-runtime = { version = "1.0.0", path = "../runtime" }
 
 # EVM
 jsonrpc-pubsub = "18.0.0"
@@ -82,4 +82,4 @@ substrate-build-script-utils = { git = 'https://github.com/paritytech/substrate'
 
 [features]
 default = []
-runtime-benchmarks = ['Diora-runtime/runtime-benchmarks']
+runtime-benchmarks = ['diora-runtime/runtime-benchmarks']

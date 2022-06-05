@@ -1,10 +1,10 @@
 [package]
-name = 'Diora-runtime'
+name = 'diora-runtime'
 version = '1.0.0'
-description = 'Diora-runtime'
+description = 'diora-runtime'
 authors = ['wangningbo, 0xJay']
 edition = '2018'
-repository = 'https://github.com/diora.network/Diora/'
+repository = 'https://github.com/diora.network/diora/'
 
 [package.metadata.docs.rs]
 targets = ['x86_64-unknown-linux-gnu']

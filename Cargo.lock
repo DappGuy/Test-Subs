@@ -3873,7 +3873,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "nbchain"
+name = "diora"
 version = "1.0.0"
 dependencies = [
  "fc-consensus",
@@ -3889,7 +3889,7 @@ dependencies = [
  "hex-literal",
  "jsonrpc-core",
  "jsonrpc-pubsub",
- "nbchain-runtime",
+ "diora-runtime",
  "pallet-erc20-rpc",
  "pallet-ethereum",
  "pallet-transaction-payment-rpc",
@@ -3927,7 +3927,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "nbchain-runtime"
+name = "diora-runtime"
 version = "1.0.0"
 dependencies = [
  "check",

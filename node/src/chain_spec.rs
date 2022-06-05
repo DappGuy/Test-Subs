@@ -1,4 +1,4 @@
-pub use nbchain_runtime::{
+pub use diora_runtime::{
     AccountId, AuraConfig, BalancesConfig, ERC20Config, EthereumChainIdConfig, EthereumConfig,
     EvmConfig, GenesisAccount, GenesisConfig, GrandpaConfig, Signature, SudoConfig,
     SystemConfig, WASM_BINARY,
@@ -45,7 +45,7 @@ pub fn mainnet_config() -> Result<ChainSpec, String> {
     let wasm_binary = WASM_BINARY.ok_or_else(|| "Development wasm not available".to_string())?;
     Ok(ChainSpec::from_genesis(
         // Name
-        "Diora",
+        "diora",
         // ID
         "mainnet",
         ChainType::Development,
@@ -89,7 +89,7 @@ pub fn mainnet_config() -> Result<ChainSpec, String> {
 //     let wasm_binary = WASM_BINARY.ok_or_else(|| "Development wasm not available".to_string())?;
 //     Ok(ChainSpec::from_genesis(
 //         // Name
-//         "Diora",
+//         "diora",
 //         // ID
 //         "testnet",
 //         ChainType::Live,
@@ -125,7 +125,7 @@ pub fn mainnet_config() -> Result<ChainSpec, String> {
 // }
 
 // pub fn mainnet_config() -> Result<ChainSpec, String> {
-//     ChainSpec::from_json_bytes(&include_bytes!("../res/nbchain-mainnet-raw.json")[..])
+//     ChainSpec::from_json_bytes(&include_bytes!("../res/diora-mainnet-raw.json")[..])
 // }
 
 pub fn development_config() -> Result<ChainSpec, String> {
@@ -279,7 +279,7 @@ fn nb_genesis(
         },
         ethereum: EthereumConfig {},
         erc20: ERC20Config {
-            name: String::from("Diora Network").into_bytes(),
+            name: String::from("diora Network").into_bytes(),
             symbol: String::from("DIR").into_bytes(),
             decimal: 18,
             owner: get_account_id_from_seed::<sr25519::Public>("Alice"),

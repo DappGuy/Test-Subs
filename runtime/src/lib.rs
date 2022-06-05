@@ -117,8 +117,8 @@ pub mod opaque {
 //   https://docs.substrate.io/v3/runtime/origins#runtime-versioning
 #[sp_version::runtime_version]
 pub const VERSION: RuntimeVersion = RuntimeVersion {
-    spec_name: create_runtime_str!("nbchain"),
-    impl_name: create_runtime_str!("nbchain"),
+    spec_name: create_runtime_str!("diora"),
+    impl_name: create_runtime_str!("diora"),
     authoring_version: 1,
     // The version of the runtime specification. A full node will not attempt to use its native
     //   runtime in substitute for the on-chain Wasm runtime unless all of `spec_name`,

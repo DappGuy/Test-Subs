@@ -7,7 +7,7 @@
 
 use std::sync::Arc;
 
-use nbchain_runtime::{opaque::Block, AccountId, Balance, Hash, Index};
+use diora_runtime::{opaque::Block, AccountId, Balance, Hash, Index};
 use sc_network::NetworkService;
 pub use sc_rpc_api::DenyUnsafe;
 use sc_transaction_pool_api::TransactionPool;
@@ -135,7 +135,7 @@ where
 			client.clone(),
 			pool.clone(),
 			graph,
-			nbchain_runtime::TransactionConverter,
+			diora_runtime::TransactionConverter,
 			network.clone(),
 			signers,
 			overrides.clone(),

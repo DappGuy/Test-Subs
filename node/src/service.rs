@@ -1,7 +1,7 @@
 //! Service and ServiceFactory implementation. Specialized wrapper over substrate service.
 #![allow(clippy::all)]
 
-use nbchain_runtime::{self, opaque::Block, RuntimeApi};
+use diora_runtime::{self, opaque::Block, RuntimeApi};
 use sc_client_api::{ExecutorProvider, RemoteBackend};
 use sc_consensus_aura::{ImportQueueParams, SlotProportion, StartAuraParams};
 pub use sc_executor::NativeElseWasmExecutor;
@@ -12,6 +12,8 @@ use sc_telemetry::{Telemetry, TelemetryWorker};
 use sp_consensus::SlotData;
 use sp_consensus_aura::sr25519::AuthorityPair as AuraPair;
 use std::{sync::Arc, time::Duration};
+use Diora_runtime::opaque::Block;
+use Diora_runtime::RuntimeApi;
 
 // EVM
 use fc_consensus::FrontierBlockImport;
@@ -31,11 +33,11 @@ impl sc_executor::NativeExecutionDispatch for Executor {
 	type ExtendHostFunctions = frame_benchmarking::benchmarking::HostFunctions;
 
 	fn dispatch(method: &str, data: &[u8]) -> Option<Vec<u8>> {
-		nbchain_runtime::api::dispatch(method, data)
+		diora_runtime::api::dispatch(method, data)
 	}
 
 	fn native_version() -> sc_executor::NativeVersion {
-		nbchain_runtime::native_version()
+		diora_runtime::native_version()
 	}
 }
 
