@@ -131,12 +131,12 @@ pub fn development_config() -> Result<ChainSpec, String> {
     let wasm_binary = WASM_BINARY.ok_or_else(|| "Development wasm not available".to_string())?;
     Ok(ChainSpec::from_genesis(
         // Name
-        "diora",
+        "Diora Devnet",
         // ID
         "dev",
         ChainType::Development,
         move || {
-            nb_genesis(
+            diora_genesis(
                 wasm_binary,
                 // Initial PoA authorities
                 vec![authority_keys_from_seed("Alice")],
@@ -148,26 +148,18 @@ pub fn development_config() -> Result<ChainSpec, String> {
                 ],
                 true,
                 vec![
-                    // Alith
+                    // Abby
                     H160::from(hex_literal::hex!["f24FF3a9CF04c71Dbc94D0b566f7A27B94566cac"]),
-                    // Baltathar
+                    // Barry
                     H160::from(hex_literal::hex!["3Cd0A705a2DC65e5b1E1205896BaA2be8A07c6e0"]),
-                    // Charleth
+                    // Charles
                     H160::from(hex_literal::hex!["798d4Ba9baf0064Ec19eB4F0a1a45785ae9D6DFc"]),
-                    // Dorothy
+                    // Dave
                     H160::from(hex_literal::hex!["773539d4Ac0e786233D90A233654ccEE26a613D9"]),
-                    // Ethan
+                    // Eddy
                     H160::from(hex_literal::hex!["Ff64d3F6efE2317EE2807d223a0Bdc4c0c49dfDB"]),
-                    // Faith
+                    // Fabian
                     H160::from(hex_literal::hex!["C0F0f4ab324C46e55D02D0033343B4Be8A55532d"]),
-                    // Goliath
-                    H160::from(hex_literal::hex!["7BF369283338E12C90514468aa3868A551AB2929"]),
-                    // Heath
-                    H160::from(hex_literal::hex!["931f3600a299fd9B24cEfB3BfF79388D19804BeA"]),
-                    // Ida
-                    H160::from(hex_literal::hex!["C41C5F1123ECCd5ce233578B2e7ebd5693869d73"]),
-                    // Judith
-                    H160::from(hex_literal::hex!["2898FE7a42Be376C8BC7AF536A940F7Fd5aDd423"]),
                     // Alice
                     H160::from(hex_literal::hex!["d43593c715fdd31c61141abd04a99fd6822c8558"]),
                 ],
@@ -256,7 +248,7 @@ fn nb_genesis(
             // Assign network admin rights.
             key: root_key,
         },
-        ethereum_chain_id: EthereumChainIdConfig { chain_id: 1209u64 },
+        ethereum_chain_id: EthereumChainIdConfig { chain_id: 201u64 },
         evm: EvmConfig {
             accounts: addresses
                 .into_iter()
@@ -275,7 +267,7 @@ fn nb_genesis(
         },
         ethereum: EthereumConfig {},
         erc20: ERC20Config {
-            name: String::from("diora Network").into_bytes(),
+            name: String::from("Diora Network").into_bytes(),
             symbol: String::from("DIR").into_bytes(),
             decimal: 18,
             owner: get_account_id_from_seed::<sr25519::Public>("Alice"),
