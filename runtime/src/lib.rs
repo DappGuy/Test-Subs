@@ -177,11 +177,11 @@ impl frame_system::Config for Runtime {
     /// The maximum length of a block (in bytes).
     type BlockLength = BlockLength;
     /// The identifier used to distinguish between accounts.
-    type AccountId = AccountId32;
+    type AccountId = AccountId;
     /// The aggregated dispatch type that is available for extrinsics.
     type Call = Call;
     /// The lookup mechanism to get account ID from whatever is passed in dispatchers.
-    type Lookup = AccountId32Lookup<AccountId32, ()>;
+    type Lookup = AccountIdLookup<AccountId, ()>;
     /// The index type for storing how many extrinsics an account has signed.
     type Index = Index;
     /// The index type for blocks.
@@ -460,7 +460,7 @@ impl fp_rpc::ConvertTransaction<opaque::UncheckedExtrinsic> for TransactionConve
 }
 
 /// The address format for describing accounts.
-pub type Address = sp_runtime::MultiAddress<AccountId32, ()>;
+pub type Address = sp_runtime::MultiAddress<AccountId, ()>;
 /// Block header type as expected by this runtime.
 pub type Header = generic::Header<BlockNumber, BlakeTwo256>;
 /// Block type as expected by this runtime.
@@ -479,7 +479,7 @@ pub type SignedExtra = (
 pub type UncheckedExtrinsic =
 fp_self_contained::UncheckedExtrinsic<Address, Call, Signature, SignedExtra>;
 /// Extrinsic type that has already been checked.
-pub type CheckedExtrinsic = fp_self_contained::CheckedExtrinsic<AccountId32, Call, SignedExtra, H160>;
+pub type CheckedExtrinsic = fp_self_contained::CheckedExtrinsic<AccountId, Call, SignedExtra, H160>;
 /// Executive: handles dispatch to the various modules.
 pub type Executive = frame_executive::Executive<
     Runtime,
@@ -646,8 +646,8 @@ impl_runtime_apis! {
 		}
 	}
 
-	impl frame_system_rpc_runtime_api::AccountNonceApi<Block, AccountId32, Index> for Runtime {
-		fn account_nonce(account: AccountId32) -> Index {
+	impl frame_system_rpc_runtime_api::AccountNonceApi<Block, AccountId, Index> for Runtime {
+		fn account_nonce(account: AccountId) -> Index {
 			System::account_nonce(account)
 		}
 	}
@@ -666,8 +666,8 @@ impl_runtime_apis! {
 			TransactionPayment::query_fee_details(uxt, len)
 		}
 	}
-	 impl pallet_erc20_rpc_runtime_api::ERC20Api<Block, AccountId32> for Runtime {
-		fn get_erc20_info(_owner: AccountId32) -> Option<ERC20Info<AccountId32>> {
+	 impl pallet_erc20_rpc_runtime_api::ERC20Api<Block, AccountId> for Runtime {
+		fn get_erc20_info(_owner: AccountId) -> Option<ERC20Info<AccountId>> {
 			ERC20::get_erc20_info()
 		}
 	}
