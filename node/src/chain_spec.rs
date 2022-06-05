@@ -131,7 +131,7 @@ pub fn development_config() -> Result<ChainSpec, String> {
     let wasm_binary = WASM_BINARY.ok_or_else(|| "Development wasm not available".to_string())?;
     Ok(ChainSpec::from_genesis(
         // Name
-        "Diora Development",
+        "diora",
         // ID
         "dev",
         ChainType::Development,
